@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+const API = import.meta.env.VITE_API_URL;
 
 export default function AdminDashboard() {
   const [allFood, setAllFood] = useState([]);
@@ -17,7 +18,7 @@ export default function AdminDashboard() {
 
   const fetchAdminData = async () => {
     try {
-      const res = await axios.get("http://localhost:5000/api/food/admin", {
+      const res = await axios.get(`${API}/api/food/admin`,{
         headers: { Authorization: token }
       });
       setAllFood(res.data);
@@ -36,7 +37,7 @@ export default function AdminDashboard() {
   // 🚩 New: Fetch Complaints Logic
   const fetchComplaints = async () => {
     try {
-      const res = await axios.get("http://localhost:5000/api/complaints/admin", {
+      const res = await axios.get(`${API}/api/complaints/admin`, {
         headers: { Authorization: token }
       });
       setComplaints(res.data);
@@ -47,7 +48,7 @@ export default function AdminDashboard() {
 
   const approveFood = async (id) => {
     try {
-      await axios.patch(`http://localhost:5000/api/food/approve/${id}`, {}, {
+      await axios.patch(`${API}/api/food/approve/${id}`, {}, {
         headers: { Authorization: token }
       });
       alert("Post verified and approved!");
@@ -60,7 +61,7 @@ export default function AdminDashboard() {
   const deletePost = async (id) => {
     if (window.confirm("⚠️ Remove this listing?")) {
       try {
-        await axios.delete(`http://localhost:5000/api/food/${id}`, {
+        await axios.delete(`${API}/api/food/${id}`, {
           headers: { Authorization: token }
         });
         setAllFood(allFood.filter(f => f._id !== id));

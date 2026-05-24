@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+const API = import.meta.env.VITE_API_URL;
 
 export default function History() {
   const [items, setItems] = useState([]);
@@ -13,7 +14,7 @@ export default function History() {
   }, [token]);
 
   const fetchHistory = () => {
-    axios.get("http://localhost:5000/api/food/history", {
+    axios.get(`${API}/api/food/history`, {
       headers: { Authorization: token }
     })
     .then(res => setItems(res.data))
@@ -25,7 +26,7 @@ export default function History() {
     if (!reason) return;
 
     try {
-      await axios.post("http://localhost:5000/api/complaints", 
+      await axios.post(`${API}/api/complaints`, 
         { foodId, reason }, 
         { headers: { Authorization: token } }
       );
