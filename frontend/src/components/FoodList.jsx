@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
+const API = import.meta.env.VITE_API_URL;
 
 export default function FoodList() {
   const [foods, setFoods] = useState([]);
@@ -8,7 +9,7 @@ export default function FoodList() {
 
   useEffect(() => {
     // Fetch available food with donor details
-    axios.get("http://localhost:5000/api/food")
+    axios.get(`${API}/api/food`)
       .then(res => setFoods(res.data))
       .catch(err => console.log("Error fetching food:", err));
   }, []);
@@ -16,7 +17,7 @@ export default function FoodList() {
   const handleRequest = async (foodId) => {
     try {
       await axios.post(
-        `http://localhost:5000/api/food/request/${foodId}`,
+        `${API}/api/food/request/${foodId}`,
         {},
         { headers: { Authorization: token } }
       );

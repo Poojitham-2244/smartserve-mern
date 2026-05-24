@@ -10,7 +10,7 @@ export default function Register() {
   const register = async () => {
     if (!data.role) return alert("Please select a role");
     try {
-      await axios.post("http://localhost:5000/api/auth/register", data);
+      await axios.post(`${API}/api/auth/register`, data);
       alert("Registered successfully! Please login.");
       nav("/");
     } catch (err) {

@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import axios from 'axios';
+const API = import.meta.env.VITE_API_URL;
 
 export default function AddFood() {
   const [form, setForm] = useState({
@@ -28,7 +29,7 @@ export default function AddFood() {
     const token = localStorage.getItem("token");
 
     try {
-      await axios.post('http://localhost:5000/api/food', form, {
+      await axios.post(`${API}/api/food`, form, {
         headers: { Authorization: token }
       });
       alert("Post sent for Admin Approval! 🛡️");
