@@ -100,7 +100,7 @@ export default function AddFood() {
                 className="border p-2 w-full rounded-lg mt-1" 
                 onChange={e => setForm({...form, foodType: e.target.value})}
               >
-                <option value="Veg">🌱 Veg</option>
+                <option value="Veg"> Veg</option>
                 <option value="Non-Veg">🍗 Non-Veg</option>
               </select>
             </div>
