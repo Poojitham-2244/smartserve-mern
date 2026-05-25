@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
+const API = import.meta.env.VITE_API_URL;
 
 export default function Login() {
   const [data, setData] = useState({});

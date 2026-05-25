@@ -5,6 +5,7 @@ import Dashboard from "./pages/Dashboard";
 import FoodList from "./components/FoodList";
 import History from "./pages/History";
 import AdminDashboard from "./pages/AdminDashboard";
+const API = import.meta.env.VITE_API_URL;
 
 function App() {
   return (
