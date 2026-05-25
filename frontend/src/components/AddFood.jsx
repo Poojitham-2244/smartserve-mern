@@ -44,7 +44,7 @@ export default function AddFood() {
   return (
     <div className="bg-white p-8 rounded-3xl shadow-xl border border-gray-100 w-full">
       <h2 className="text-2xl font-bold mb-6 text-green-700 flex items-center gap-2">
-        🍎 Create New Donation
+        Create New Donation
       </h2>
 
       <form onSubmit={handleSubmit} className="space-y-4">
